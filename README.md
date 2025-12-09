@@ -1,1 +1,140 @@
-# listo-para-la-emergencia
+
+<html lang="es">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Cómo actuar en caso de emergencia</title>
+	<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+	<header>
+		<div class="wrap">
+			<h1>Cómo actuar en caso de emergencia</h1>
+			<p class="subtitle">Guía práctica, rápida y accesible</p>
+			<nav aria-label="Navegación principal" class="main-nav">
+				<button onclick="mostrarSeccion('inicio')">Inicio</button>
+				<button onclick="mostrarSeccion('mapa')">Mapa</button>
+				<button onclick="mostrarSeccion('checklist')">Checklist</button>
+				<button onclick="mostrarSeccion('numeros')">Números</button>
+				<button onclick="mostrarSeccion('guias')">Guías</button>
+			</nav>
+		</div>
+	</header>
+
+	<main class="wrap">
+		<!-- INICIO -->
+		<section id="inicio" class="visible" aria-labelledby="titulo-inicio">
+			<h2 id="titulo-inicio">Prioridades iniciales</h2>
+			<ol>
+				<li>Mantén la calma y respira con calma.</li>
+				<li>Asegura a las personas a tu alrededor (niños, personas mayores, mascotas).</li>
+				<li>Aléjate de peligros inmediatos (fuego, vidrios, cables eléctricos, agua profunda).</li>
+				<li>Comunícate: llama a los números de emergencia si es necesario.</li>
+			</ol>
+
+			<div class="quick-actions">
+				<a class="call-btn" href="tel:110">Llamar emergencia (110)</a>
+				<button onclick="window.print()">Imprimir / Guardar PDF</button>
+			</div>
+
+			<!-- Mini checklist para confirmar lo empacado -->
+			<div class="mini-checklist">
+				<h3>Confirmar items empacados</h3>
+				<p class="muted">Marca lo que ya tengas en tu mochila de emergencia.</p>
+				<div id="miniChecklistContainer" aria-live="polite"></div>
+			</div>
+
+			<!-- Información adicional y video en inicio -->
+			<div class="inicio-info">
+				<h3>¿Está usted preparado?</h3>
+				<p>Si ocurriera un desastre natural donde usted vive, ¿estaría preparado? Los terremotos, los huracanes, los incendios forestales y las inundaciones pueden ocurrir de repente y causar muchos daños. Además, puede haber ataques terroristas, disturbios y epidemias en cualquier lugar del mundo y sin previo aviso (Ec 9:11). No deberíamos pensar que esas cosas nunca pasarán donde vivimos.</p>
+				<p>Todos nosotros debemos hacer lo que esté a nuestro alcance para estar preparados para un desastre (Pr 22:3). Aunque la organización de Jehová da cierta ayuda cuando ocurren desastres, eso no quiere decir que no tengamos que cumplir con nuestra responsabilidad personal (Gál 6:5).</p>
+				<div class="video-container-mini" id="videoContainerInicio">
+					<p class="muted">No hay video cargado.</p>
+				</div>
+			</div>
+		</section>
+
+		<!-- MAPA -->
+		<section id="mapa" aria-labelledby="titulo-mapa">
+			<h2 id="titulo-mapa">Punto de encuentro y mapa</h2>
+			<p>Ubicación del punto de encuentro marcado en Sucre (pin).</p>
+			<div class="mapa-container">
+				<iframe
+					src="https://maps.google.com/maps?q=-19.037115040486672,-65.24316715638071&z=19&output=embed"
+					width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+				<p class="muted"><a href="https://www.google.com/maps/search/?api=1&query=-19.037115040486672,-65.24316715638071" target="_blank" rel="noopener">Abrir en Google Maps (Salón del Reino)</a> — Salón del Reino — Lat: -19.037115040486672, Lon: -65.24316715638071</p>
+			</div>
+		</section>
+
+		<!-- CHECKLIST -->
+		<section id="checklist" aria-labelledby="titulo-checklist">
+			<h2 id="titulo-checklist">Checklist: Qué llevar</h2>
+			<p class="muted">Personaliza tu mochila de emergencia (bolsa por persona).</p>
+			<ul id="listaChecklist" aria-live="polite"></ul>
+			<div class="add-item">
+				<input type="text" id="nuevoItem" placeholder="Nuevo ítem..." aria-label="Nuevo ítem" />
+				<button onclick="agregarItem()">Añadir</button>
+				<button onclick="copiarChecklist()">Copiar checklist</button>
+				<button onclick="imprimirChecklist()">Imprimir checklist</button>
+				<button onclick="restablecerChecklist()" title="Restablece la checklist por defecto">Restablecer checklist</button>
+			</div>
+		</section>
+
+		<!-- NÚMEROS DE EMERGENCIA -->
+		<section id="numeros" aria-labelledby="titulo-numeros">
+			<h2 id="titulo-numeros">Contactos importantes</h2>
+			<ul class="numeros-list">
+				<li>📱 Ricardo Aparicio: <a href="tel:+59163741078">+591 6374 1078</a></li>
+				<li>📱 Paul Cano: <a href="tel:+59163367265">+591 6336 7265</a></li>
+				<li>📱 Jean Cote: <a href="tel:+59174522978">+591 7452 2978</a></li>
+				<li>📱 Edgar Márquez: <a href="tel:+59175798448">+591 7579 8448</a></li>
+			</ul>
+			<p class="note">Guarda estos contactos y añade más si es necesario.</p>
+
+			<h3>Contactos de emergencia (familia)</h3>
+			<ul class="numeros-list familia-list">
+				<li>📱 Pablo Rejas: <a href="tel:+59161884256">+591 6188 4256</a></li>
+				<li>📱 Miguel Rejas: <a href="tel:+59165260348">+591 6526 0348</a></li>
+				<li>📱 Valeria Rejas: <a href="tel:+59175455485">+591 7545 5485</a></li>
+				<li>📱 Ruth Rejas: <a href="tel:+59169676878">+591 6967 6878</a></li>
+			</ul>
+		</section>
+
+		<!-- GUÍAS -->
+		<section id="guias" aria-labelledby="titulo-guias">
+			<h2 id="titulo-guias">Guías rápidas</h2>
+			<div id="contenidoGuias"></div>
+		</section>
+	</main>
+
+	<!-- INFORMACIÓN ADICIONAL -->
+	<section id="infoAdicional" aria-labelledby="titulo-info" class="wrap">
+		<h2 id="titulo-info">Información adicional</h2>
+		<div class="nota-box">
+			<h3>¿Está usted preparado?</h3>
+			<p>Si ocurriera un desastre natural donde usted vive, ¿estaría preparado? Los terremotos, los huracanes, los incendios forestales y las inundaciones pueden ocurrir de repente y causar muchos daños. Además, puede haber ataques terroristas, disturbios y epidemias en cualquier lugar del mundo y sin previo aviso (Ec 9:11). No deberíamos pensar que esas cosas nunca pasarán donde vivimos.</p>
+			<p>Todos nosotros debemos hacer lo que esté a nuestro alcance para estar preparados para un desastre (Pr 22:3). Aunque la organización de Jehová da cierta ayuda cuando ocurren desastres, eso no quiere decir que no tengamos que cumplir con nuestra responsabilidad personal (Gál 6:5).</p>
+		</div>
+
+		<div class="video-section">
+			<h3>Video informativo</h3>
+			<p class="muted">Pega la URL de YouTube (o enlace público) y pulsa "Cargar video". El video se guardará localmente en este navegador.</p>
+			<div class="video-controls">
+				<input type="text" id="videoUrl" placeholder="https://" aria-label="" />
+				<button onclick="cargarVideo()">Cargar video</button>
+				<button onclick="borrarVideo()">Eliminar video</button>
+			</div>
+			<div class="video-container" id="videoContainer">
+				<p class="muted">No hay video cargado.</p>
+			</div>
+		</div>
+	</section>
+
+	<footer class="wrap">
+		<p>Última actualización: <span id="lastUpdated">08/12/2025</span>. Fuentes: protección civil y organismos locales.</p>
+	</footer>
+
+	<script src="app.js"></script>
+</body>
+</html>
